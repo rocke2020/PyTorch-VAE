@@ -3,7 +3,7 @@ import yaml
 import argparse
 import numpy as np
 from pathlib import Path
-from models import *
+from models import vae_models
 from experiment import VAEXperiment
 import torch.backends.cudnn as cudnn
 from pytorch_lightning import Trainer
@@ -42,7 +42,7 @@ experiment = VAEXperiment(model,
 data = VAEDataset(**config["data_params"], pin_memory=len(config['trainer_params']['gpus']) != 0)
 
 data.setup()
-runner = Trainer(logger=tb_logger,
+runner = Trainer(logger=tb_logger,g
                  callbacks=[
                      LearningRateMonitor(),
                      ModelCheckpoint(save_top_k=2, 

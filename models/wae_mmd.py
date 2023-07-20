@@ -18,7 +18,7 @@ class WAE_MMD(BaseVAE):
         super(WAE_MMD, self).__init__()
 
         self.latent_dim = latent_dim
-        self.reg_weight = reg_weight
+        self.reg_weight = reg_weight 
         self.kernel_type = kernel_type
         self.z_var = latent_var
 
@@ -60,8 +60,6 @@ class WAE_MMD(BaseVAE):
                     nn.BatchNorm2d(hidden_dims[i + 1]),
                     nn.LeakyReLU())
             )
-
-
 
         self.decoder = nn.Sequential(*modules)
 
@@ -148,7 +146,6 @@ class WAE_MMD(BaseVAE):
             raise ValueError('Undefined kernel type.')
 
         return result
-
 
     def compute_rbf(self,
                     x1: Tensor,
